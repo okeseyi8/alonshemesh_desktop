@@ -27,8 +27,9 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
 
 
 .header_bg{
-  /* display: flex; */
-  /* flex-direction: row; */
+  display: flex;
+  direction: rtl;
+  flex-direction: row-reverse;
   background:url(../images/Header_bg.jpg) no-repeat left #253547;
   width:910px;
   height:134px;

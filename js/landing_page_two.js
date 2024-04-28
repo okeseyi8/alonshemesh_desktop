@@ -330,6 +330,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // all_lis[i].appendChild(div)
     }
 }
-    insertimgsndicon();
+    // insertimgsndicon();
 });
 
