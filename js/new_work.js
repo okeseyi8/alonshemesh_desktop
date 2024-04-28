@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var path = 'images/stations/';
     var isLiked = false;
     var fav_cls = [];
+    var cls = []
 
     // Check if the cookie exists
     var cookieValue = getCookie("linksAndImagesCookie");
@@ -53,8 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
             removeLinkFromArray(link);
         });
         link.appendChild(image);
-        link.appendChild(close_btn); // Append close button icon to the link
+        // link.appendChild(close_btn); // Append close button icon to the link
         container.appendChild(link);
+        rebuildFavoritesContainer();
     });
 
     $draggableLink.find('a').on('dragstart', function (onDragStart) {
@@ -113,40 +115,81 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // function rebuildFavoritesContainer() {
+    //     container.innerHTML = '';
+
+    //     linksAndImages.forEach(item => {
+    //         const link = document.createElement('a');
+    //         link.href = item.href;
+
+    //         const image = document.createElement('img');
+    //         image.src = item.src;
+    //         image.alt = item.alt;
+    //         image.title = item.title;
+    //         image.style.zIndex = '1';
+
+    //         const close_btn = document.createElement('i');
+    //         close_btn.className = "fa-solid fa-xmark"; // Use 'X' icon
+    //         close_btn.style.position = 'absolute'; // Set position to absolute
+    //         close_btn.style.top = '0'; // Align to top edge
+    //         close_btn.style.right = '0'; // Align to right edge
+    //         close_btn.style.cursor = 'pointer'; // Add cursor style
+    //         close_btn.style.fontSize = '20px';
+    //         close_btn.style.width = '20px';
+    //         close_btn.style.height = '20px';
+    //         close_btn.style.zIndex = '2';
+    //         close_btn.addEventListener('click', function(event) {
+    //             event.preventDefault();
+    //             console.log('close button clicked');
+    //             removeLinkFromArray(link);
+    //         });
+
+    //         link.appendChild(image);
+    //         console.log(close_btn)
+    //         link.appendChild(close_btn);
+    //         console.log(container);
+    //         container.appendChild(link);
+    //     });
+    // }
     function rebuildFavoritesContainer() {
         container.innerHTML = '';
 
         linksAndImages.forEach(item => {
             const link = document.createElement('a');
             link.href = item.href;
+            link.style.position = 'relative';
+            link.style.height = '70px'
 
             const image = document.createElement('img');
             image.src = item.src;
             image.alt = item.alt;
             image.title = item.title;
-            image.style.zIndex = '1';
 
             const close_btn = document.createElement('i');
             close_btn.className = "fa-solid fa-xmark"; // Use 'X' icon
             close_btn.style.position = 'absolute'; // Set position to absolute
-            close_btn.style.top = '0'; // Align to top edge
-            close_btn.style.right = '0'; // Align to right edge
+            close_btn.style.top = '-60px'; // Align to top edge
+            close_btn.style.left = '0'; // Align to right edge
             close_btn.style.cursor = 'pointer'; // Add cursor style
             close_btn.style.fontSize = '20px';
             close_btn.style.width = '20px';
             close_btn.style.height = '20px';
-            close_btn.style.zIndex = '2';
+            close_btn.style.zIndex = '1000';
             close_btn.addEventListener('click', function(event) {
+            // Do something when the close button is clicked
                 event.preventDefault();
-                console.log('close button clicked');
                 removeLinkFromArray(link);
+                // updateCookies();
+                // container.removeChild(link); 
+                rebuildFavoritesContainer();// Remove the link from the container
             });
-
-            link.appendChild(image);
+            console.log(link)
             link.appendChild(close_btn);
+            link.appendChild(image);
             container.appendChild(link);
         });
     }
+
 
     function convertToImageFormat(filename) {
         // Replace '.html' with '.png'
@@ -196,11 +239,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // div.style.flexDirection = 'column'
 
             let hrefValue = td[i].getAttribute("href")
-            console.log(hrefValue)
     
             // Remove ".html" from hrefValue
             hrefValue = hrefValue.replace(".html", ".png");
-            console.log(hrefValue);
             var clsname = hrefValue.replace(".png","");
             all_lis[i].className = clsname
             
@@ -217,8 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
             heartImg.style.color = 'brown'
             heartImg.style.zIndex = '2';
             heartImg.style.cursor = 'pointer';
+            var isLiked = true;
             heartImg.addEventListener("click", () => {
-                isLiked = !isLiked;
+                // isLiked = !isLiked;
                 if(isLiked){
                     heartImg.classList.replace("fa-regular", "fa-solid")
                     var linkHref = hrefValue.replace(".png", ".html");
@@ -327,6 +369,44 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(listOfDictionaries);
         rebuildFavoritesContainer();
     }
+    function removeLinkFromArray(link) {
 
+        let url = link.href;
+        let lastSlashIndex = url.lastIndexOf('/');
+        let lastHtmlIndex = url.lastIndexOf('.html');
+        let res = '';
+        let indexToRemove = -1;
+        if (lastSlashIndex !== -1 && lastHtmlIndex !== -1) {
+            let result = url.substring(lastSlashIndex + 1, lastHtmlIndex);
+            res = result;
+            console.log(result); // Output: kan-gimmel
+
+        } else {
+            console.log("URL format not recognized");
+        }
+
+
+        let listOfDictionaries = getCookie("linksAndImagesCookie") ? JSON.parse(getCookie("linksAndImagesCookie")) : [];
+        listOfDictionaries.forEach((item, index) => {
+            iten = item.href
+            iten = iten.replace('.html', '');
+            console.log(iten);
+            if (res === iten){
+                indexToRemove
+                console.log('it works');
+                indexToRemove = index;
+            }
+        })
+
+        listOfDictionaries.splice(indexToRemove, 1);
+        console.log(listOfDictionaries);
+
+        setCookie("linksAndImagesCookie", JSON.stringify(listOfDictionaries), 30);
+        updateCookies();
+        rebuildFavoritesContainer();
+
+
+                
+    }
 
 });

@@ -256,8 +256,8 @@ h1{
 .body_con_main_div{
 	background:#FFFFFF;
 	width:960px;
-	height: 140vh;
-	padding:15px 15px 215px 15px;
+	height: auto;
+	padding:15px 15px 15px 15px;
 	margin:auto;}	
 	
 	
