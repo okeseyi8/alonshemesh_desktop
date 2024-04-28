@@ -1,0 +1,27 @@
+.musicPlayer{position: relative; background: #ddd; max-width: 204px; width: 100%; height: 134px; padding: 23px; border: 1px solid #505050; border-radius: 10px; margin: 0px auto;}
+
+#volume {
+    position: relative;
+	bottom: -15%;
+    margin: 0 auto;
+    height:15px;
+    max-width: 204px;
+    background: url('images/volume-empty.png') no-repeat left top;
+}
+
+#volume .ui-slider-range-min {
+    height:15px;
+    width: 204px;
+    position: absolute;
+    background: url('images/volume-full.png') no-repeat left top;
+}
+
+#volume .ui-slider-handle {
+    width: 38px;
+    height:39px;
+    background: url('images/volume-knob.png') no-repeat left top;
+    position: absolute;
+    margin-left: -19px;
+    margin-top: -8px;
+    cursor: pointer;
+}

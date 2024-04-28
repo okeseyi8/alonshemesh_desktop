@@ -1,0 +1,324 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="player_container">
+      <div class="first_col">
+        <div class="play_btn">
+          <button class="main_play" id="play">
+            <i id="play-icon" class="fa fa-play-circle" aria-hidden="true"></i>
+          </button>
+          <!-- <i class=""></i> -->
+        </div>
+        <div class="play_speaker" >
+          <button id= "main_speaker" class="main_speaker">
+            <i id="speaker-icon" class="fa fa-volume-high"></i>
+          </button>
+          <div class="bar">
+            <div id="bar_dot" class="bar_dot"></div>
+            <div id="bar_fill" class="bar_fill"></div>
+          </div>
+
+          <!-- <i class="fa-solid fa-volume-xmark"></i> -->
+        </div>
+        <!-- volume up and down -->
+        <div class="fb_like">
+          <div class="counter" style="border-bottom: solid 2px">
+            <p id="counterText" style="text-align: center">123</p>
+          </div>
+          <div
+            class="like button"
+            style="display: flex; justify-content: center; align-items: center;"
+          >
+           
+            <p style="margin-top: 5px; font-size: 8px;">YOUR CODE GOES HERE</p>
+            
+          </div>
+          
+        </div>
+        <div class="favorites" style="margin: 0 0 0 10%">
+          <button id="like_button" class="like_button">
+            <i id='like_icon' class="fa-regular fa-heart" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="second_col">
+        
+        <div class="name_section">
+          <div class="play_main_title">רדיוס 100FM</div>
+          <div class="play_title">מנגן עכשיו</div>
+        </div>
+        <div class="img">
+          <img
+            class="img_logo"
+            src="https://static.rlive.co.il/storage/uploads/stations/VB0yDWABE2EE2HJvuqAlB8g7xZ0vIZE0SbvBWIft.jpeg"
+            alt=""
+            srcset=""
+            width="100px"
+            height="100px"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+     const playButton = document.getElementById("play");
+     const counterText = document.getElementById("counterText");
+     const main_speaker = document.getElementById("main_speaker")
+     const speaker_icon = document.getElementById("speaker-icon");
+     const like_button = document.getElementById("like_button");
+     const like_icon = document.getElementById("like_icon")
+     const bar_fill = document.getElementById("bar_fill");
+     const bar_dot = document.getElementById("bar_dot");
+let play_icon = document.getElementById("play-icon");
+let isPlaying = false;
+let isMute = false;
+let isLiked = false;
+let counterValue = 0;
+
+let audio; // Variable to store the Audio object
+// like_button.addEventListener("click", () =>{
+
+// })
+
+
+
+playButton.addEventListener("click", () => {
+    isPlaying = !isPlaying;
+    isMute = !isMute;
+    if (isPlaying) {
+        audio = new Audio("http://102.livecdn.biz/102fm_aac");
+        play_icon.classList.replace("fa-play-circle", "fa-circle-pause");
+        
+        audio.play();
+    } else {
+        if (audio) {
+            audio.pause(); // Pause the audio
+        }
+        play_icon.classList.replace("fa-circle-pause", "fa-play-circle");
+    }
+});
+function muteBar(){
+  bar_fill.style.width = 0;
+  bar_dot.style.transform = "translateX(0)"
+  
+
+
+}
+function loudBar() {
+  bar_fill.style.width = "70px";
+  bar_dot.style.transform = "translateX(700%)"
+  
+}
+// loudBar();
+// muteBar();
+window.onload = function(){
+  main_speaker.addEventListener("click", () =>{
+    isMute = !isMute;
+    
+    if(isMute && audio){
+      audio.volume = 0;
+      speaker_icon.classList.replace("fa-volume-high", "fa-volume-mute");
+      muteBar();
+    }else if(!isMute && audio){
+      audio.volume = 1;
+      speaker_icon.classList.replace("fa-volume-mute", "fa-volume-high");
+      loudBar();
+    }
+  
+  })
+  if (speaker_icon.classList.contains('fa-volume-mute')) {
+    audio.volume = 0;
+  }
+
+  counterText.textContent = counterValue;
+  like_button.addEventListener("click", () =>{
+  isLiked = !isLiked;
+  if(isLiked){
+    like_icon.classList.replace("fa-regular", "fa-solid")
+    counterValue++
+    counterText.textContent = counterValue;
+    document.cookie = "likedStation=Israel fm; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
+
+    console.log(counterValue)
+  }else{
+    like_icon.classList.replace("fa-solid", "fa-regular")
+    counterValue--
+    counterText.textContent = counterValue;
+    document.cookie = "likedStation=; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
+
+
+  }
+
+})
+}
+
+
+    </script>
+  </body>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open%20Sans:wght@300&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .fb_like {
+      
+      border: 2px solid black;
+      width: 20rem;
+      height: 3em;
+    }
+   
+    #play-icon {
+      transition: all 0.3s ease;
+    }
+
+    .bar {
+      background-color: rgb(115, 138, 158);
+      position: relative;
+      width: 70%;
+      height: 0.2rem;
+      margin-left: 10px;
+    }
+    .bar_fill{
+      width:70px;
+      height: 0.2rem;
+      background-color: green;
+      z-index: 1;
+    }
+    .bar_dot {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: -3px;
+      transform: translateX(700%);
+      z-index:100;
+      cursor: pointer;
+    }
+    .player_container {
+      display: flex;
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      overflow: hidden;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100vw;
+      height: 60px;
+      background-color: rgb(183, 204, 91);
+      bottom: 0;
+    }
+    .fa-heart{
+      font-size: 40px;
+      color: brown;
+    }
+    .fa.fa-play-circle, .fa-circle-pause{
+      color: #1C5BD0;
+    }
+    .play_speaker {
+      width: 40%;
+      display: flex;
+      margin-left: 10%;
+      margin-right: 10%;
+      align-items: center;
+      /* justify-content:; */
+    }
+    @media only screen and (max-width: 768px) {
+    .play_speaker{
+        display: none;
+    }
+    .fb_like{
+        margin-left: 30px;
+        /* margin-right:-30px; */
+    }
+    
+    .img_logo{
+      margin-right: 5px;
+    }
+    .play_main_title , .play_title{
+	  font-size: 12px;
+    }
+  }
+    .main_speaker{
+      width: 25px;
+    }
+    .first_col {
+      display: flex;
+      width: 65vw;
+      padding-left: 5%;
+      
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    .second_col {
+      display: flex;
+      width: 35vw;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 20px;
+      margin-right: 5%;
+    }
+    .img_logo {
+      margin-top: 5px;
+      width: 50px;
+      height: 50px;
+    }
+    .fa-solid.fa-heart{
+      scale:1.25;
+      transition: all 0.3s ease-in-out;
+    }
+    .fa-regular{
+      transition: all 0.3s ease-in-out;
+    }
+    .name_section {
+      margin: 1rem;
+	  direction: rtl;
+	  font-size: 18px;
+    }
+    .play_main_title {
+	font-weight: bold;
+    }
+	.play_title {
+	}
+
+    .fa-circle-pause {
+      font-size: 55px;
+    }
+    .fa.fa-play-circle,
+    .fa-solid.fa-circle-pause {
+      font-size: 55px;
+      /* transition: ; */
+    }
+    
+    button.main_play,
+    button.main_speaker,
+    .like_button {
+      cursor: pointer;
+      background-color: transparent;
+      border: 0;
+    }
+    .like_button {
+      text-align: center;
+    }
+  </style>
+</html>

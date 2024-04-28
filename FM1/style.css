@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* Reset (start) */
+
+
+
+*
+{
+	margin: 0; padding: 0; border: 0; outline: 0;
+	vertical-align: baseline; background: transparent;
+	direction: rtl; text-decoration: none;
+	font: 100% "Arial";
+}
+
+
+
+:focus {outline: 0;}
+
+ul, ol {list-style: none; }
+
+form{height: auto; display: block;}
+
+a, a:visited{color: #fff; font-size: 20px;}
+a:hover{color: #fff;}
+
+h2{font-size: 30px; color: #6b6b6b;}
+
+strong{font-weight: bold; color: #000;}
+
+.right{float: right;}
+.left{float: left;}
+.clear{ clear: both; }
+
+#wrapper {margin: 0 auto 5% auto;}
+header#topNav{background: #253447; width: 92%; height: 50px; padding: 0 4%;}
+.bottomFixed{position: fixed; bottom: 0; z-index: 8888; width: 100%;}
+
+#logo h1{margin-top: 3px;}
+#logo h1 a img{width: 100%; max-width: 65px; height: auto;}
+#logo h1 a span{opacity:0; position:absolute; text-indent:-9999px; width:0;}
+
+#menu {margin: 20px 40px 0 0; width: 80%;}
+#menu ul{text-align: center;}
+#menu ul li{display: inline-block; margin: 0 0 0 10%; color: #fff; cursor: pointer;}
+#menu ul li, #menu ul li a:first-of-type{font-size: 16px; color: #fff!important; text-shadow: 0 0 0!important; font-weight: normal!important; font-family: arial;}
+#menu ul li:last-child{margin-left: 0;}
+#menu ul li.current{border-bottom: 2px solid #46acd4;}
+
+#infoHeader{margin: 10px 0 0 5px;}
+#infoHeader img {max-width: 32px; width: 100%;}
+
+.stationsWrap h3{
+	background: url('images/arrowDown.png') no-repeat right 22px top 27px;
+	max-width: 100%;
+	height: auto;
+}
+.stationsWrap h3{color: #587493; font-size: 35px; font-weight: bold; border-bottom: 1px solid #ddd; display: block; max-width: 100%; height: 100%; padding: 20px 55px 20px 0;}
+
+.stationsWrap ul li {padding: 10px 20px; position: relative;}
+.stationsWrap ul li a:first-of-type, .stationsWrap ul li a:first-of-type:hover{color: #000; display: block; margin-top: 5px; width: 100%;}
+.stationsWrap ul li a:first-of-type span {display: block; margin: 5px 40px;}
+.stationsWrap ul li div:first-of-type {position: absolute; left: 10px;}
+
+.innerStation{text-align: center; margin: 0px auto; padding: 0;}
+/*.innerStation h2{color: #587493; font-size: 35px; font-weight: bold; border-bottom: 1px solid #ddd; display: block; max-width: 100%; height: 100%; padding: 0;} */
+.innerStation h2{color: #587493; font-size: 25px; font-weight: bold; margin: 10px auto;}
+.innerStation img.contentIMG {max-width: 150px; height: auto; width: 100%;}
+.innerStation #volume {position: relative; bottom: -20px; margin: 0 auto; height: 10px; max-width: 30%; background: #ddd; border-radius: 15px; direction: ltr; padding: 0 5px; display: none;}
+.innerStation ul.inner-bar {margin: 0px 0; width: 100%;}
+.innerStation ul.inner-bar li {display: inline-block; margin: 0 5%; height: 58px; vertical-align: bottom; position: relative;}
+.innerStation ul.inner-bar li span {display: block; position: absolute; bottom: 0; right: 4px; color: #949494; font-size: 12px;}
+
+/*.stationsWrap ul li ul li{background: none;}
+.stationsWrap ul li ul li a{color: #587493; font-size: 25px; font-weight: normal; display: block; max-width: 100%; height: 100%; padding: 20px 100px 20px 0; border: 0;} */
+
+.bottomFixed#ad{background: transparent; text-align: center; height: 50px; font-size: 35px; color: #fff;}
+
+.musicPlayer{width: 100%; height: auto; direction: ltr; margin: 10px auto;}
+/*.musicPlayer iframe{max-width: 100%; max-height: 20vw; height: 100%;} */
+.musicPlayer.fixed{position: fixed; bottom: 40px; z-index: 7777; background: #253447; width: 92%; height: 35px; padding: 15px 4%; direction: ltr; display: none;}
+.musicPlayer.fixed.embedFrame iframe, .musicPlayer.fixed.embedFrame object {max-width: 92%; width: 100%; height: 213px; max-height: none; position: absolute; bottom: 10px;}
+.controls, .innerPlayPause, #playPause{cursor: pointer; height: auto;}
+
+#rightMusicBar {margin-top: -5px;}
+#rightMusicBar li {display: inline-block; margin-left: 20px;}
+
+div#info {padding: 5% 20%; text-align: justify;}
+
+#container{padding-bottom: 0px;} /* היה 70 והורדתי בשביל המודעה */
+
+img.favo {margin-top: 5px;}
+
+/* Maximum width of 1000 pixels. */
+@media screen and (max-width: 1000px) {
+	#menu {width: 70%;}
+}
+/* Maximum width of 600 pixels. */
+@media screen and (max-width: 600px) {
+	.innerStation #volume {max-width: 70%;}
+	#menu {width: 60%; margin: 23px 5% 0 0;}
+}
+
+/* Maximum width of 400 pixels. */
+@media screen and (max-width: 400px) {
+	#menu{width: 50%;}
+	#menu ul li {margin-left: 10px;}
+	#menu ul li, #menu ul li a:first-of-type{font-size: 15px;}
+	
+	#infoHeader a img{width: 100%; max-width: 32px; height: auto;}
+	
+	div#info {padding: 5% 10%;}
+}
+
+/* Maximum width of 315 pixels. */
+@media screen and (max-width: 315px) {
+	#menu {margin-right: 0; width: 55%;}
+	#menu ul li, #menu ul li a:first-of-type{margin-left: 5px; font-size: 15px;}
+	
+	#infoHeader{margin-top: 10px;}
+	#infoHeader a img{width: 100%; max-width: 24px; height: auto;}
+	
+	.stationsWrap ul li{background-size: 15px; background-position-y: 30px;}
+	.stationsWrap ul li a{font-size: 23px; padding: 0 10px 20px 0;}
+	
+	#rightMusicBar {margin-top: 0;}
+	#rightMusicBar li {margin-left: 5px;}
+	ul#rightMusicBar li img {max-width: 24px; max-height: 24px;}
+}

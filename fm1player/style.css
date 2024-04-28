@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@font-face {	font-family: 'proximanovalight';	src: url('fonts/proximanovalight.eot');	src: local('proximanovalight'), url('fonts/proximanovalight.woff') format('woff'), url('fonts/proximanovalight.ttf') format('truetype');}
+/* Reset (start) */
+*{	margin: 0; padding: 0; border: 0; outline: 0;	vertical-align: baseline; background: transparent;	direction: ltr; text-decoration: none;	font: 100% "proximanovalight", "Arial"; text-align: center;	color: #fff;}
+:focus {outline: 0;}ul, ol {list-style: none; }
+form{height: auto; display: block;}
+a, a:visited{color: #000; font-size: 20px;}a:hover{color: #0675a3;}
+h2{font-size: 30px; color: #6b6b6b;}
+strong{font-weight: bold; color: #000;}
+.right{float: right;}.left{float: left;}.clear{ clear: both; }
+/* Reset (end) */
+.wrapper{margin: 0px auto; padding: 0px;}.controls{cursor: pointer;}
+/* Maximum width of 1000 pixels. */@media screen and (max-width: 1000px) {	.musicPlayer{width: 90%; height: auto;}	.controls{height: auto;}	/*.controls{max-width: 128px; width: 100%; height: auto; margin-top: 3px;}	#volume {bottom: 0!important;}*/}

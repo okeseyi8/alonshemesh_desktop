@@ -1,0 +1,22 @@
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(FM1/Source/Security.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 10
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(): Failed opening 'FM1/Source/Security.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 10
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 11
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 11
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(functions.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 12
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  include(): Failed opening 'functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 12
+[31-Jan-2024 12:15:16 America/Chicago] PHP Warning:  Undefined variable $Sec in /home2/vors/zamap.com/FM1/index.php on line 76
+[31-Jan-2024 12:15:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function get() on null in /home2/vors/zamap.com/FM1/index.php:76
+Stack trace:
+#0 {main}
+  thrown in /home2/vors/zamap.com/FM1/index.php on line 76
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(FM1/Source/Security.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 10
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(): Failed opening 'FM1/Source/Security.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 10
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 11
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 11
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(functions.php): Failed to open stream: No such file or directory in /home2/vors/zamap.com/FM1/index.php on line 12
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  include(): Failed opening 'functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/vors/zamap.com/FM1/index.php on line 12
+[31-Jan-2024 12:29:07 America/Chicago] PHP Warning:  Undefined variable $Sec in /home2/vors/zamap.com/FM1/index.php on line 76
+[31-Jan-2024 12:29:07 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function get() on null in /home2/vors/zamap.com/FM1/index.php:76
+Stack trace:
+#0 {main}
+  thrown in /home2/vors/zamap.com/FM1/index.php on line 76

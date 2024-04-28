@@ -1,0 +1,19 @@
+#p2 {
+	position: absolute;
+	background: transparent;
+	width: 70px;
+	height: 20px;
+	left: 900px;
+	top: 100px;
+	display: block;
+ }
+.button_play { background: transparent; border: none !important; font-size:0; cursor: pointer; }
+.button_stop { background: transparent; border: none !important; font-size:0; cursor: pointer; }
+.loading { /*background: transparent url( images/loading.gif ) no-repeat center;*/ }
+.ui-progressbar-value,
+.ui-progressbar-value.play,
+.ui-progressbar-value.stop { /*background: transparent url( images/progress.gif ) repeat;*/ }
+.ui-progressbar-value.stop { background: transparent none; }
+.ui-slider-handle,
+.ui-slider-horizontal { position: relative; }
+.ui-slider-range { background-color: #000000; }
